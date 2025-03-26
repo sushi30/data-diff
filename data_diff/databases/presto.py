@@ -154,6 +154,9 @@ class Presto(Database):
 
     def __init__(self, **kw) -> None:
         super().__init__()
+        if not len(kw):
+            # no kwargs provided, trino constructor consumed them all
+            return
         self.default_schema = "public"
         prestodb = import_presto()
 
